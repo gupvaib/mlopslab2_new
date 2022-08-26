@@ -1,0 +1,196 @@
+(base) v4i8@linux-os:~$ ls -l
+total 52
+drwxrwxr-x 28 v4i8 v4i8 4096 May 30 07:23 anaconda3
+-rw-rw-r--  1 v4i8 v4i8    0 Aug 23 22:37 cap_%d
+drwxr-xr-x  2 v4i8 v4i8 4096 May 30 05:03 Desktop
+drwxr-xr-x  3 v4i8 v4i8 4096 Jul  3 00:32 Documents
+drwxr-xr-x  3 v4i8 v4i8 4096 Aug 25 00:37 Downloads
+drwxrwxr-x  3 v4i8 v4i8 4096 May 30 05:14 experiments
+drwxrwxr-x  4 v4i8 v4i8 4096 Aug 21 10:24 MLOps
+drwxr-xr-x  2 v4i8 v4i8 4096 May 30 05:03 Music
+drwxr-xr-x  4 v4i8 v4i8 4096 Aug 13 17:40 Pictures
+drwxr-xr-x  2 v4i8 v4i8 4096 May 30 05:03 Public
+drwx------  5 v4i8 v4i8 4096 May 30 16:04 snap
+drwxr-xr-x  2 v4i8 v4i8 4096 May 30 05:03 Templates
+drwxr-xr-x  2 v4i8 v4i8 4096 May 30 05:03 Videos
+drwxrwxr-x  8 v4i8 v4i8 4096 Jun 17 04:23 WoeUSB-ng
+(base) v4i8@linux-os:~$ cd MLOps/
+(base) v4i8@linux-os:~/MLOps$ ls
+get-started-python  MLOpsLab2
+(base) v4i8@linux-os:~/MLOps$ git clone git@github.com:gupvaib/mlopslab2_new.git
+Cloning into 'mlopslab2_new'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+(base) v4i8@linux-os:~/MLOps$ cd mlopslab2_new/
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ LS 
+LS: command not found
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ LS
+LS: command not found
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ ls
+README.md
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ git checkout -b develop
+\Switched to a new branch 'develop'
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ ls 
+plot_digits_classification.py  README.md
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ conda create -n "mlops2_new" python=3.6.9
+Collecting package metadata (current_repodata.json): done
+Solving environment: failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.13.0
+  latest version: 4.14.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /home/v4i8/anaconda3/envs/mlops2_new
+
+  added / updated specs:
+    - python=3.6.9
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2022.07.19-h06a4308_0
+  certifi            pkgs/main/linux-64::certifi-2021.5.30-py36h06a4308_0
+  libedit            pkgs/main/linux-64::libedit-3.1.20210910-h7f8727e_0
+  libffi             pkgs/main/linux-64::libffi-3.2.1-hf484d3e_1007
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1
+  ncurses            pkgs/main/linux-64::ncurses-6.3-h5eee18b_3
+  openssl            pkgs/main/linux-64::openssl-1.1.1q-h7f8727e_0
+  pip                pkgs/main/linux-64::pip-21.2.2-py36h06a4308_0
+  python             pkgs/main/linux-64::python-3.6.9-h265db76_0
+  readline           pkgs/main/linux-64::readline-7.0-h7b6447c_5
+  setuptools         pkgs/main/linux-64::setuptools-58.0.4-py36h06a4308_0
+  sqlite             pkgs/main/linux-64::sqlite-3.33.0-h62c20be_0
+  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0
+  wheel              pkgs/main/noarch::wheel-0.37.1-pyhd3eb1b0_0
+  xz                 pkgs/main/linux-64::xz-5.2.5-h7f8727e_1
+  zlib               pkgs/main/linux-64::zlib-1.2.12-h7f8727e_2
+
+
+Proceed ([y]/n)? y
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: done
+#
+# To activate this environment, use
+#
+#     $ conda activate mlops2_new
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(base) v4i8@linux-os:~/MLOps/mlopslab2_new$ conda activate mlops2_new
+(mlops2_new) v4i8@linux-os:~/MLOps/mlopslab2_new$ conda list
+# packages in environment at /home/v4i8/anaconda3/envs/mlops2_new:
+#
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                        main  
+_openmp_mutex             5.1                       1_gnu  
+ca-certificates           2022.07.19           h06a4308_0  
+certifi                   2021.5.30        py36h06a4308_0  
+libedit                   3.1.20210910         h7f8727e_0  
+libffi                    3.2.1             hf484d3e_1007  
+libgcc-ng                 11.2.0               h1234567_1  
+libgomp                   11.2.0               h1234567_1  
+libstdcxx-ng              11.2.0               h1234567_1  
+ncurses                   6.3                  h5eee18b_3  
+openssl                   1.1.1q               h7f8727e_0  
+pip                       21.2.2           py36h06a4308_0  
+python                    3.6.9                h265db76_0  
+readline                  7.0                  h7b6447c_5  
+setuptools                58.0.4           py36h06a4308_0  
+sqlite                    3.33.0               h62c20be_0  
+tk                        8.6.12               h1ccaba5_0  
+wheel                     0.37.1             pyhd3eb1b0_0  
+xz                        5.2.5                h7f8727e_1  
+zlib                      1.2.12               h7f8727e_2  
+(mlops2_new) v4i8@linux-os:~/MLOps/mlopslab2_new$ python plot_digits_classification.py 
+Traceback (most recent call last):
+  File "plot_digits_classification.py", line 15, in <module>
+    import matplotlib.pyplot as plt
+ModuleNotFoundError: No module named 'matplotlib'
+(mlops2_new) v4i8@linux-os:~/MLOps/mlopslab2_new$ vi requirements.txt
+(mlops2_new) v4i8@linux-os:~/MLOps/mlopslab2_new$ pip install -r requirements.txt 
+Collecting matplotlib
+  Using cached matplotlib-3.3.4-cp36-cp36m-manylinux1_x86_64.whl (11.5 MB)
+Collecting scikit-learn==0.24.2
+  Using cached scikit_learn-0.24.2-cp36-cp36m-manylinux2010_x86_64.whl (22.2 MB)
+Collecting scikit-image==0.17.2
+  Using cached scikit_image-0.17.2-cp36-cp36m-manylinux1_x86_64.whl (12.4 MB)
+Collecting scipy>=0.19.1
+  Using cached scipy-1.5.4-cp36-cp36m-manylinux1_x86_64.whl (25.9 MB)
+Collecting joblib>=0.11
+  Using cached joblib-1.1.0-py2.py3-none-any.whl (306 kB)
+Collecting threadpoolctl>=2.0.0
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting numpy>=1.13.3
+  Using cached numpy-1.19.5-cp36-cp36m-manylinux2010_x86_64.whl (14.8 MB)
+Collecting PyWavelets>=1.1.1
+  Using cached PyWavelets-1.1.1-cp36-cp36m-manylinux1_x86_64.whl (4.4 MB)
+Collecting imageio>=2.3.0
+  Using cached imageio-2.15.0-py3-none-any.whl (3.3 MB)
+Collecting pillow!=7.1.0,!=7.1.1,>=4.3.0
+  Using cached Pillow-8.4.0-cp36-cp36m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.1 MB)
+Collecting networkx>=2.0
+  Using cached networkx-2.5.1-py3-none-any.whl (1.6 MB)
+Collecting tifffile>=2019.7.26
+  Using cached tifffile-2020.9.3-py3-none-any.whl (148 kB)
+Collecting pyparsing!=2.0.4,!=2.1.2,!=2.1.6,>=2.0.3
+  Using cached pyparsing-3.0.9-py3-none-any.whl (98 kB)
+Collecting python-dateutil>=2.1
+  Using cached python_dateutil-2.8.2-py2.py3-none-any.whl (247 kB)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.3.1-cp36-cp36m-manylinux1_x86_64.whl (1.1 MB)
+Collecting decorator<5,>=4.3
+  Using cached decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+Collecting six>=1.5
+  Using cached six-1.16.0-py2.py3-none-any.whl (11 kB)
+Installing collected packages: six, python-dateutil, pyparsing, pillow, numpy, kiwisolver, decorator, cycler, tifffile, threadpoolctl, scipy, PyWavelets, networkx, matplotlib, joblib, imageio, scikit-learn, scikit-image
+Successfully installed PyWavelets-1.1.1 cycler-0.11.0 decorator-4.4.2 imageio-2.15.0 joblib-1.1.0 kiwisolver-1.3.1 matplotlib-3.3.4 networkx-2.5.1 numpy-1.19.5 pillow-8.4.0 pyparsing-3.0.9 python-dateutil-2.8.2 scikit-image-0.17.2 scikit-learn-0.24.2 scipy-1.5.4 six-1.16.0 threadpoolctl-3.1.0 tifffile-2020.9.3
+(mlops2_new) v4i8@linux-os:~/MLOps/mlopslab2_new$ python plot_digits_classification.py 
+Classification report for classifier SVC(gamma=0.001):
+              precision    recall  f1-score   support
+
+           0       1.00      0.99      0.99        88
+           1       0.99      0.97      0.98        91
+           2       0.99      0.99      0.99        86
+           3       0.98      0.87      0.92        91
+           4       0.99      0.96      0.97        92
+           5       0.95      0.97      0.96        91
+           6       0.99      0.99      0.99        91
+           7       0.96      0.99      0.97        89
+           8       0.94      1.00      0.97        88
+           9       0.93      0.98      0.95        92
+
+    accuracy                           0.97       899
+   macro avg       0.97      0.97      0.97       899
+weighted avg       0.97      0.97      0.97       899
+
+
+Traceback (most recent call last):
+  File "plot_digits_classification.py", line 100, in <module>
+    disp = metrics.ConfusionMatrixDisplay.from_predictions(y_test, predicted)
+AttributeError: type object 'ConfusionMatrixDisplay' has no attribute 'from_predictions'
+(mlops2_new) v4i8@linux-os:~/MLOps/mlopslab2_new$ 
+
+

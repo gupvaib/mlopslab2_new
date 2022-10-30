@@ -15,3 +15,21 @@
  5 x x
  mean x x
  std x x
+
+
+# answer for #7 
+                                                  svm                                      decision_tree
+0  {'accuracy_score': 0.9832402234636871, 'f1_sco...  {'accuracy_score': 0.8659217877094972, 'f1_sco...
+1  {'accuracy_score': 0.994413407821229, 'f1_scor...  {'accuracy_score': 0.7988826815642458, 'f1_sco...
+2  {'accuracy_score': 0.994413407821229, 'f1_scor...  {'accuracy_score': 0.88268156424581, 'f1_scori...
+3  {'accuracy_score': 0.9832402234636871, 'f1_sco...  {'accuracy_score': 0.8603351955307262, 'f1_sco...
+4  {'accuracy_score': 0.994413407821229, 'f1_scor...  {'accuracy_score': 0.8547486033519553, 'f1_sco...
+
+SVM Accuracy Mean
+0.9899
+SVM Standard Deviation
+0.0061
+DECISION TREE Accuracy Mean
+0.8525
+DECISION TREE Standard Deviation
+0.0318

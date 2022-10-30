@@ -18,7 +18,7 @@
 
 
 # answer for #7 
-
+```
                        svm                                      decision_tree
 0  {'accuracy_score': 0.9832402234636871, 'f1_sco...  {'accuracy_score': 0.8659217877094972, 'f1_sco...
 1  {'accuracy_score': 0.994413407821229, 'f1_scor...  {'accuracy_score': 0.7988826815642458, 'f1_sco...
@@ -34,3 +34,4 @@ DECISION TREE Accuracy Mean
 0.8525
 DECISION TREE Standard Deviation
 0.0318
+```

@@ -2,6 +2,7 @@ from sklearn import datasets, svm, metrics, tree
 import pdb
 import pandas as pd
 import numpy as np 
+import argparse
 
 from utils import (
     preprocess_digits,
@@ -12,6 +13,25 @@ from utils import (
     f1_scoring
 )
 from joblib import dump, load
+import os
+from pathlib import Path
+
+#import seed value from args 
+parser = argparse.ArgumentParser(description='Arguments for classifier name and random seed value')
+# default = 'svm',
+# default = 42,
+parser.add_argument('--clf_name', action='store', help='Classifier name svm or tree', 
+                     nargs=1, required=True)
+
+parser.add_argument('--random_state', type=int, action='store', help='Seed value for splitting dataset',
+                     nargs=1, required=True),
+
+args = vars(parser.parse_args())
+
+print(args)
+
+model_name = args['clf_name']
+random_state = args['random_state']
 
 train_frac, dev_frac, test_frac = 0.8, 0.1, 0.1
 assert train_frac + dev_frac + test_frac == 1.0
@@ -31,7 +51,7 @@ dec_params = {}
 dec_params["max_depth"] = max_depth_list
 dec_h_param_comb = get_all_h_param_comb(dec_params)
 
-h_param_comb = {"svm": svm_h_param_comb, "decision_tree": dec_h_param_comb}
+h_param_comb = {"svm": svm_h_param_comb, "tree": dec_h_param_comb}
 
 # PART: load dataset -- data from csv, tsv, jsonl, pickle
 digits = datasets.load_digits()
@@ -53,9 +73,12 @@ for n in range(n_cv):
 
     models = {
         "svm": svm.SVC(),
-        "decision_tree": tree.DecisionTreeClassifier(),
+        "tree": tree.DecisionTreeClassifier(),
     }
+
     for clf_name in models:
+        if model_name[0]!=clf_name:
+            continue
         clf = models[clf_name]
         print("[{}] Running hyper parameter tuning for {} ====>> ".format(n,clf_name))
         actual_model_path = tune_and_save(
@@ -66,7 +89,7 @@ for n in range(n_cv):
         predicted = best_model.predict(x_test)
         if clf_name =='svm':
     	       predicted_lable_svm = predicted
-        if clf_name =='decision_tree':
+        if clf_name =='tree':
     	       predicted_labels_DecisionTree = predicted
  
         if not clf_name in results:
@@ -83,27 +106,29 @@ for n in range(n_cv):
 df = pd.DataFrame(results)
 print(df)
 
-mean_svm=[]
-for i in range(5):
-    mean_svm.append(results['svm'][i]['accuracy_score'])
-df1=pd.DataFrame(mean_svm)
-print("SVM Accuracy Mean")
-print(float(np.round(df1.mean(),4)))
-print("SVM Standard Deviation")
-print(float(np.round(df1.std(),4)))
+if model_name[0] == 'svm':
+    mean_svm=[]
+    for i in range(5):
+        mean_svm.append(results['svm'][i]['accuracy_score'])
+    df1=pd.DataFrame(mean_svm)
+    print("SVM Accuracy Mean")
+    print(float(np.round(df1.mean(),4)))
+    print("SVM Standard Deviation")
+    print(float(np.round(df1.std(),4)))
 
-mean_dt=[]
-for i in range(5):
-    mean_dt.append(results['decision_tree'][i]['accuracy_score'])
-df2=pd.DataFrame(mean_dt)
-print("DECISION TREE Accuracy Mean")
-print(float(np.round(df2.mean(),4)))
-print("DECISION TREE Standard Deviation")
-print(float(np.round(df2.std(),4)))
+if model_name[0] == 'tree':
+    mean_dt=[]
+    for i in range(5):
+        mean_dt.append(results['tree'][i]['accuracy_score'])
+    df2=pd.DataFrame(mean_dt)
+    print("DECISION TREE Accuracy Mean")
+    print(float(np.round(df2.mean(),4)))
+    print("DECISION TREE Standard Deviation")
+    print(float(np.round(df2.std(),4)))
 
 
-count=0
-for i in range(len(predicted_lable_svm)):
- 	if predicted_lable_svm[i] != predicted_labels_DecisionTree [i]:
-         count=count+1
-print("Gap count in prediction label betweeen SVM and DECISION TREE",':',count)
+# count=0
+# for i in range(len(predicted_lable_svm)):
+#  	if predicted_lable_svm[i] != predicted_labels_DecisionTree [i]:
+#          count=count+1
+# print("Gap count in prediction label betweeen SVM and DECISION TREE",':',count)

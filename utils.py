@@ -6,6 +6,8 @@ from sklearn.metrics import f1_score
 from joblib import dump
 from sklearn import svm, tree
 import pdb
+import os
+from pathlib import Path
 
 
 def get_all_combs(param_vals, param_name, combs_so_far):
@@ -79,6 +81,18 @@ def train_dev_test_split(data, label, train_frac, dev_frac):
 
     return x_train, y_train, x_dev, y_dev, x_test, y_test
 
+def train_dev_test_split_equal(data, label, train_frac, dev_frac):
+
+    dev_test_frac = 1 - train_frac
+    x_train, x_dev_test, y_train, y_dev_test = train_test_split(
+        data, label, test_size=dev_test_frac, shuffle=True
+    )
+    x_test, x_dev, y_test, y_dev = train_test_split(
+        x_dev_test, y_dev_test, test_size=(dev_frac) / dev_test_frac, shuffle=True
+    )
+
+    return x_train, y_train, x_dev, y_dev, x_test, y_test
+
 
 def h_param_tuning(h_param_comb, clf, x_train, y_train, x_dev, y_dev, metric, verbose=False):
     best_metric = -1.0
@@ -121,6 +135,8 @@ def tune_and_save(
         h_param_comb, clf, x_train, y_train, x_dev, y_dev, metric
     )
 
+    model_base = './models/'
+    result_base = './results/'
     # save the best_model
     best_param_config = "_".join(
         [h + "=" + str(best_h_params[h]) for h in best_h_params]
@@ -134,12 +150,21 @@ def tune_and_save(
 
     best_model_name = model_type + "_" + best_param_config + ".joblib"
     if model_path == None:
-        model_path = best_model_name
+        model_path = os.path.join(model_base, best_model_name)
     dump(best_model, model_path)
 
     print("Best hyperparameters were:" + str(best_h_params))
 
     print("Best Metric on Dev was:{}".format(best_metric))
+
+    file_to_touch = best_model_name+".txt"
+    path_to_touch = os.path.join(result_base, file_to_touch)
+    Path(path_to_touch).touch()
+
+    with open(path_to_touch, 'a') as file:
+        file.writelines(str(best_h_params)+ '\n')
+        file.writelines( 'test accuracy ' + str(best_metric)+ '\n')
+        file.writelines('model saved at '+ model_path + '\n')
 
     return model_path
 

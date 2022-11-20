@@ -1,0 +1,6 @@
+{'gamma': 0.0004, 'C': 5}
+0.9834254143646409
+model saved at ./models/svm_gamma=0.0004_C=5.joblib
+{'gamma': 0.0004, 'C': 5}
+test accuracy 0.9865319865319865
+model saved at ./models/svm_gamma=0.0004_C=5.joblib

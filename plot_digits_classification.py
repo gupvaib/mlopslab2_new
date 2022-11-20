@@ -33,7 +33,7 @@ print(args)
 model_name = args['clf_name']
 random_state = args['random_state']
 
-train_frac, dev_frac, test_frac = 0.8, 0.1, 0.1
+train_frac, dev_frac, test_frac = 0.34, 0.33, 0.33
 assert train_frac + dev_frac + test_frac == 1.0
 
 # 1. set the ranges of hyper parameters

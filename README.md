@@ -1,3 +1,3 @@
-# Quiz 3 
+# Final Exam 
 
 ## Submitted by Vaibhav Gupta 
